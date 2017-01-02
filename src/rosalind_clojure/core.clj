@@ -18,3 +18,20 @@
   "Problema: Counting DNA Nucleotides."
   [dna]
   (map #(count-char dna %) [\A \C \G \T]))
+
+(defn transcribing-dna-into-rna
+  "Problema: Transcribing DNA into RNA."
+  [dna]
+  (reduce str
+    (map #(if (= % \T) \U %) dna)))
+
+(defn reverse-dna
+  "Problema: The Secondary and Tertiary Structures of DNA"
+  [dna]
+  (reduce str
+    (map #(cond
+            (= % \T) \A
+            (= % \A) \T
+            (= % \G) \C
+            (= % \C) \G)
+          (reverse dna))))
